@@ -16,24 +16,24 @@ app.use((req, res, next)=> {
 });
 
 app.use("/stockage", express.static(path.join(__dirname, "stockage")));
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3001;
 
 const Router = require("./routers/routing");
 const DataBase = require("./dbconnexions/db_connexion");
 33
 
 app.use(Router);
-// try {
-    // app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
+try {
+    app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     DataBase.sequelize.authenticate()
     .then(()=> console.log("Connexion à la Base de Données établie avec succès."))
     .then(()=>{
         console.log("Connexion à la Base de Données établie avec succès.");
-        app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
+        // app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     })
-// }catch (error) {
-//     console.log("Erreur survenue lors de la connexion à la Base de Données",error)
-// }
+}catch (error) {
+    console.log("Erreur survenue lors de la connexion à la Base de Données",error)
+}
 
 
 
