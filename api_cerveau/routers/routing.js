@@ -12,7 +12,7 @@ const VirementController = require("../controllers/virement_controller");
 
 Router.get("/", (req, res)=>{
     res.send(
-        "<h1 style='margin:15rem auto; width: 150px; padding:1.5rem; color:red; font-size:1.8rem; border; 2px solid blue; font-weight:bolder'>WELCOM TO CERVEAU MONEY</h1>"
+        "<h1 style='margin:15rem auto; width: 450px; padding:1.5rem; color:red; font-size:1.8rem; border; 2px solid blue; font-weight:bolder'>WELCOM TO CERVEAU MONEY</h1>"
     )
 })
 
