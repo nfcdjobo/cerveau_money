@@ -10,10 +10,6 @@ const PortefeuilleController = require("../controllers/portefeuille_controller")
 const FraisController = require("../controllers/frais_controller");
 const VirementController = require("../controllers/virement_controller");
 
-
-
-
-
 Router.post("/createUtilisateur", UtilisateurController.create);
 Router.post("/sendCodeEmail", EmailController.sendCodeEmail);
 
@@ -31,9 +27,6 @@ Router.get("/getAllFees", FraisController.getAllFees);
 Router.post("/virement", verify_token, VirementController.create);
 Router.get("/getTransaction", verify_token, VirementController.getTransaction);
 Router.get("/getReception", verify_token, VirementController.getReception);
-
-
-
 
 
 module.exports = Router;
