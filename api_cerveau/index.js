@@ -24,9 +24,11 @@ const DataBase = require("./dbconnexions/db_connexion");
 
 app.use(Router);
 try {
+    // app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     DataBase.sequelize.authenticate()
-    .then(()=> console.log("Connexion à la Base de Données établie avec succès."))
+    // .then(()=> console.log("Connexion à la Base de Données établie avec succès."))
     .then(()=>{
+        console.log("Connexion à la Base de Données établie avec succès.");
         app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     })
 }catch (error) {

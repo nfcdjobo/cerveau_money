@@ -10,6 +10,12 @@ const PortefeuilleController = require("../controllers/portefeuille_controller")
 const FraisController = require("../controllers/frais_controller");
 const VirementController = require("../controllers/virement_controller");
 
+Router.get("/", (req, res)=>{
+    res.send(
+        "<h1 style='margin:15rem auto; width: 150px; padding:1.5rem; color:red; font-size:1.8rem; border; 2px solid blue; font-weight:bolder'>WELCOM TO CERVEAU MONEY</h1>"
+    )
+})
+
 Router.post("/createUtilisateur", UtilisateurController.create);
 Router.post("/sendCodeEmail", EmailController.sendCodeEmail);
 

@@ -28,7 +28,7 @@ let param_connect = new Sequelize(
         dialectOptions: {
             timeZone: "Etc/GMT-2"
         },
-        logging: false
+        logging: true
     }
 );
 // n@
