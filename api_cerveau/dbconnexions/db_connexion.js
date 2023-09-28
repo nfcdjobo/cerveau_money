@@ -1,11 +1,11 @@
 const {Sequelize} = require("sequelize");
 
 // let param_connect = new Sequelize(
-//     "if0_35123061_cerveau",
-//     "if0_35123061" ,
-//     "cvtpisT1UCdJx",
+//     "sql10649590",
+//     "root" ,
+//     "",
 //     {
-//         host: "sql302.infinityfree.com",
+//         host: "localhost",
 //         port: 3306,
 //         dialect: "mariadb",
 //         dialectOptions: {
@@ -31,7 +31,7 @@ let param_connect = new Sequelize(
         logging: false
     }
 );
-// n@
+
 /**mISE EN PLACE DES RELATIONS ***/
 const DataBase = {};
 DataBase.sequelize = param_connect;

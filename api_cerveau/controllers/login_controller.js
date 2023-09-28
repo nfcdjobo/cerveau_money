@@ -1,7 +1,6 @@
 const { verify_password } = require("../laboratoire/hash");
 const { sign_token } = require("../middelwares/auth");
 const DataBase = require("../dbconnexions/db_connexion");
-const { getMaxListeners } = require("nodemailer/lib/xoauth2");
 
 const Utilisateur = DataBase.Utilisateur;
 const Portefeuil = DataBase.Portefeuil;
@@ -11,7 +10,7 @@ class LoginController{
         try {
             Utilisateur.findOne({where: {email: req.body.email}})
             .then(utilisateur => {
-                if(!utilisateur) return res.status(201).json({message: "Mot de passe ou email incorrect"})
+                if(!utilisateur) return res.status(201).json({message: "Mot de passe ou email incorrect"});
                 verify_password(req.body.password, utilisateur.password)
                 .then(hash => {
                     if(!hash) return res.status(200).json({message: "Mot de passe ou email incorrect"});
@@ -24,12 +23,27 @@ class LoginController{
                                 res.status(200).json({email: utilisateur.email, portefeuil: portefeuil.id, token: `token ${sign_token({id:utilisateur.id,email:utilisateur.email, portefeuil: portefeuil.id})}`});
                             }
                         })
-                        
+                        .catch(error=>{
+                            console.log("------------------------------LoginController 0 Connexion interrompue. error", error);
+                            res.status(400).json({error: "Connexion interrompue."});
+                        })
+                    })
+                    .catch(error=>{
+                        console.log("------------------------------LoginController 1 Connexion interrompue. error", error);
+                        res.status(400).json({error: "Connexion interrompue."});
                     })
                 })
+                .catch(error=>{
+                    console.log("------------------------------LoginController 2 Connexion interrompue. error", error);
+                    res.status(400).json({error: "Connexion interrompue."});
+                })
+            })
+            .catch(error=>{
+                console.log("------------------------------LoginController 3 Connexion interrompue. error", error);
+                res.status(400).json({error: "Connexion interrompue."});
             })
         } catch (error) {
-            console.log(error);
+            console.log("------------------------------LoginController 4 Connexion interrompue. error", error);
             res.status(501).json({error})
         }
     }

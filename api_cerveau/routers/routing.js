@@ -1,8 +1,6 @@
 const express = require("express");
-const fs = require("fs")
 const Router = express.Router();
 const { verify_token } = require("../middelwares/auth");
-const chargement = require("../middelwares/updoad");
 const UtilisateurController = require("../controllers/utilisateur_controller");
 const EmailController = require("../controllers/email_controller");
 const LoginController = require("../controllers/login_controller");
@@ -33,7 +31,6 @@ Router.get("/getAllFees", FraisController.getAllFees);
 Router.post("/virement", verify_token, VirementController.create);
 Router.get("/getTransaction", verify_token, VirementController.getTransaction);
 Router.get("/getReception", verify_token, VirementController.getReception);
-
 
 module.exports = Router;
 

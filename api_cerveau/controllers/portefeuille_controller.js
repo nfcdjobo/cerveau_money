@@ -18,12 +18,10 @@ class PortefeuilleController{
         
     }
 
-
     static async findCountByNumber(req, res){
         try {
             Utilisateur.findOne({where: {email: req.auth.email, id: req.auth.id}})
             .then(utilisateur=>{
-                
                 if(!utilisateur) return res.status(203).json({message:"Mot de passe ou email incorrect"});
                 Portefeuil.findOne({
                     where: {
