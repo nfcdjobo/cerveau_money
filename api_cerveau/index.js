@@ -28,11 +28,11 @@ try {
     DataBase.sequelize.authenticate()
     .then(()=>{
         console.log("Connexion à la Base de Données établie avec succès.");
-        app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     })
-    .catch(error=>console.log("CONNEXION REFUSEE", error))
+    .catch(error=>console.log("CONNEXION REFUSEE", error));
+    app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
 }catch (error) {
-    console.log("Erreur survenue lors de la connexion à la Base de Données",error)
+    throw console.log("Erreur survenue lors de la connexion à la Base de Données",error)
 }
 
 
