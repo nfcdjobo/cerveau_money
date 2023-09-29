@@ -16,8 +16,7 @@ module.exports = (param_connect)=>{
 
         reference: {
             type: DataTypes.STRING(30),
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         
         portefeuil_id: {

@@ -28,7 +28,7 @@ let param_connect = new Sequelize(
         dialectOptions: {
             timeZone: "Etc/GMT-2"
         },
-        logging: false
+        logging: true
     }
 );
 
@@ -254,6 +254,7 @@ DataBase.Virement.belongsTo(DataBase.Portefeuil, {
         allowNull: false
     }
 });
+
 
 /**Relation One-To-One de Utilisateur et Portefeuil (utilisateur_id)**/
 DataBase.Operation.hasOne(DataBase.Rendement, {
