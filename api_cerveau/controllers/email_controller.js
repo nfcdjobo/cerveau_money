@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 class EmailController{
     static async sendCodeEmail(req, res){
         try {
-            console.log("------------------------------body", req.body);
+            
             Utilisateur.findOne({where: {email: req.body.email}})
             .then(user=>{
                 console.log("------------------------------1 user", user);
@@ -38,7 +38,7 @@ class EmailController{
                     plateforme:"Cerveau Money",
                     code:code
                 };
-                const connection = transporteur(nodemailer, "smtp-mail.outlook.com", 587, false, {ciphers:"SSLv3"}, { user: "devdjobo@outlook.com", pass: "nfcDJ0B0@"});
+                const connection = transporteur(nodemailer, "smtp-mail.outlook.com", 587, false, {ciphers:"SSLv3"}, { user: "devdjobo@outlook.com", pass: "nfcDJ0B0"});
                 connection.sendMail({
                     from: `"Cerveau Money" <devdjobo@outlook.com>`,
                     to: req.body.email,
@@ -66,5 +66,6 @@ class EmailController{
         }
     }
 }
+
 
 module.exports = EmailController;
