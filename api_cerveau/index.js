@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use((req, res, next)=> {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested, Content, Accept, Content-Type, Authorization");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
     next();
 });
@@ -21,7 +21,6 @@ const port = process.env.PORT || 3001;
 
 const Router = require("./routers/routing");
 const DataBase = require("./dbconnexions/db_connexion");
-
 
 app.use(Router);
 DataBase.sequelize.authenticate()
