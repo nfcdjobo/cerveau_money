@@ -255,7 +255,6 @@ DataBase.Virement.belongsTo(DataBase.Portefeuil, {
     }
 });
 
-
 /**Relation One-To-One de Utilisateur et Portefeuil (utilisateur_id)**/
 DataBase.Operation.hasOne(DataBase.Rendement, {
     foreignKey: {
@@ -272,8 +271,7 @@ DataBase.Rendement.belongsTo(DataBase.Operation, {
 
 
 // param_connect.sync(error=>{console.log("Erreur de synchronisation de la base de données")})
-
-DataBase.sequelize.sync({alter:true})
-
+// DataBase.sequelize.sync({alter:true})
+DataBase.sequelize.sync();
 
 module.exports = DataBase;

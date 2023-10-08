@@ -2,6 +2,7 @@ const express = require("express");
 const nodemon = require("nodemon");
 const path = require("path");
 const cors = require("cors");
+const DataBase = require("./dbconnexions/db_connexion");
 
 const app = express();
 app.use(express.json());
@@ -15,12 +16,10 @@ app.use((req, res, next)=> {
     next();
 });
 
-
 app.use("/stockage", express.static(path.join(__dirname, "stockage")));
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3010;
 
 const Router = require("./routers/routing");
-const DataBase = require("./dbconnexions/db_connexion");
 
 app.use(Router);
 DataBase.sequelize.authenticate()
@@ -28,7 +27,7 @@ DataBase.sequelize.authenticate()
     app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     console.log("Connexion à la Base de Données établie avec succès.");
 })
-.catch(error=>console.log("CONNEXION REFUSEE", error));
+.catch(error=>console.log("Connexion réfusée !", error));
     
 
 
