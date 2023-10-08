@@ -27,12 +27,16 @@ app.use(Router);
 try {
     // app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
     DataBase.sequelize.authenticate()
-    .then(()=>console.log("Connexion à la Base de Données établie avec succès."))
     .then(()=>{
+        app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
         console.log("Connexion à la Base de Données établie avec succès.");
     })
+    /*.then(()=>{
+        app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
+        console.log("Connexion à la Base de Données établie avec succès.");
+    })*/
     .catch(error=>console.log("CONNEXION REFUSEE", error));
-    app.listen(port, () => console.log(`Le server a bien été démarré sur le port ${port}.\nLe lien de base est: http://localhost:${port}`))
+    
 }catch (error) {
     throw console.log("Erreur survenue lors de la connexion à la Base de Données",error)
 }
