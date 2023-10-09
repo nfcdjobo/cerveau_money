@@ -16,7 +16,6 @@ const {Sequelize} = require("sequelize");
 // );
 
 
-
 let param_connect = new Sequelize(
     "cerveaubd_1",
     "cerveaubd",
@@ -25,8 +24,14 @@ let param_connect = new Sequelize(
         host: "mysql-cerveaubd.alwaysdata.net",
         port: 3306,
         dialect: "mariadb",
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        },
         dialectOptions: {
-            timeZone: "Etc/GMT-2"
+            // timeZone: "Etc/GMT-2"
+            timeZone: "local"
         },
         logging: false
     }
